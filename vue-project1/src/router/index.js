@@ -23,7 +23,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "item" */ "../views/Item.vue"),
     meta: {
       authRequired: true,
-    }
+    },
   },
 ];
 
@@ -33,7 +33,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.authRequired)) {
+  if (to.matched.some((record) => record.meta.authRequired)) {
     if (firebase.auth().currentUser) {
       next();
     } else {
@@ -43,6 +43,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
-})
+});
 
 export default router;
