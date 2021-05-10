@@ -133,9 +133,10 @@ export default {
         .then(() => {
           console.log("deleted item");
           this.$router.push({ path: "/" });
-        }).catch((err) => {
-          console.log(err);
         })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
   mounted() {

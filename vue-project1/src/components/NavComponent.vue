@@ -43,12 +43,12 @@ export default {
   data() {
     return {
       items: [
-         {
+        {
           label: "New item",
           icon: "pi pi-plus",
           to: "/item",
           visible: () => this.user.loggedIn,
-        }
+        },
       ],
     };
   },

@@ -85,8 +85,9 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-  width: 20rem;
+  width: 25rem;
   margin: 2em;
+  cursor: pointer;
 }
 .list-container {
   width: 100%;
