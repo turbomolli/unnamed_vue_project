@@ -80,6 +80,7 @@ export default {
           this.updateUserDetails([]);
           this.updateLoggedIn(false);
           this.toggelOverlay(event);
+          this.$router.push({ path: "/" });
         })
         .catch((err) => {
           console.log(err);

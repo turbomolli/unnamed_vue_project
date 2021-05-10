@@ -30,8 +30,8 @@ import Menubar from "primevue/menubar";
 import Avatar from "primevue/avatar";
 import OverlayPanel from "primevue/overlaypanel";
 import Card from "primevue/card";
-import InputText from 'primevue/inputtext';
-import Textarea from 'primevue/textarea';
+import InputText from "primevue/inputtext";
+import Textarea from "primevue/textarea";
 
 import "primevue/resources/themes/saga-blue/theme.css"; // theme
 import "primevue/resources/primevue.min.css"; // core
