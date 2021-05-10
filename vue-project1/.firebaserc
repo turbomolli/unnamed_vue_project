@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "careventron"
+  },
+  "targets": {
+    "careventron": {
+      "hosting": {
+        "vue-9a": [
+          "vue-9a"
+        ]
+      }
+    }
+  }
+}

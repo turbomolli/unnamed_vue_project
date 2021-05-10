@@ -24,6 +24,12 @@
               rows="5"
             />
             <Button @click="saveForm" label="Save"></Button>
+            <Button
+              v-if="form.id"
+              @click="deleteItem(form.id)"
+              class="p-button-danger"
+              label="Delete"
+            ></Button>
           </div>
         </div>
       </template>
@@ -117,6 +123,20 @@ export default {
           }
         });
     },
+    deleteItem(id) {
+      console.log("delete", id);
+      firebase
+        .firestore()
+        .collection(`users2/${this.user.data.uid}/items`)
+        .doc(id)
+        .delete()
+        .then(() => {
+          console.log("deleted item");
+          this.$router.push({ path: "/" });
+        }).catch((err) => {
+          console.log(err);
+        })
+    },
   },
   mounted() {
     const route = useRoute();
@@ -143,5 +163,9 @@ export default {
 textarea {
   margin-top: 1em;
   width: 100%;
+}
+
+button {
+  margin-top: 1em;
 }
 </style>

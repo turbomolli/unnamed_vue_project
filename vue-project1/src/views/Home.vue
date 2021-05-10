@@ -5,7 +5,7 @@
     <br />
     logged in: {{ user.loggedIn }} -->
     <h1>Welcome to Unnamed Vue Project</h1>
-    <h3 v-if="!user.loggedIn">Login with google to add new items</h3>
+    <h3 v-if="!user.loggedIn">Login with Google to add new items</h3>
     <ItemsList v-if="user.loggedIn" />
   </div>
 </template>
@@ -22,11 +22,6 @@ export default {
   },
   computed: {
     ...mapState(["user"]),
-  },
-  methods: {
-    googleSignIn() {
-      console.log("loggin in");
-    },
   },
 };
 </script>

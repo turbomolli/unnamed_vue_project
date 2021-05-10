@@ -44,7 +44,7 @@ export default {
     return {
       items: [
          {
-          label: "New",
+          label: "New item",
           icon: "pi pi-plus",
           to: "/item",
           visible: () => this.user.loggedIn,

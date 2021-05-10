@@ -1,7 +1,21 @@
 <template>
-  <h2>lists goes here</h2>
+  <div class="p-formgroup-inline p-d-flex p-jc-center">
+    <div class="p-field">
+      <InputText
+        id="search"
+        v-model="searchString"
+        type="text"
+        placeholder="Search by title"
+      />
+    </div>
+    <Button @click="search" type="button" icon="pi pi-search" label="Search" />
+  </div>
   <div class="list-container">
-    <div class="p-d-flex p-jc-center" v-for="item in items" :key="item.id">
+    <div
+      class="p-d-flex p-jc-center"
+      v-for="item in filteredItems"
+      :key="item.id"
+    >
       <Card class="card" @click="$router.push({ path: `/item/${item.id}` })">
         <template #header> </template>
         <template #title>{{ item.title }}</template>
@@ -19,6 +33,8 @@ export default {
   data() {
     return {
       items: [],
+      filteredItems: [],
+      searchString: "",
     };
   },
   computed: {
@@ -30,6 +46,7 @@ export default {
       firebase
         .firestore()
         .collection(`users2/${this.user.data.uid}/items`)
+        .orderBy("created")
         .get({ idField: "id" })
         .then((qs) => {
           qs.forEach((doc) => {
@@ -41,11 +58,23 @@ export default {
               content: doc.data().content,
             });
           });
-          console.log(this.items);
+          //console.log(this.items);
+          this.filteredItems = this.items;
         })
         .catch((err) => {
           console.log(err);
         });
+    },
+    search() {
+      console.log("search:", this.searchString);
+      if (this.searchString.length > 0) {
+        this.filteredItems = this.items.filter((item) =>
+          item.title.toLowerCase().includes(this.searchString.toLowerCase())
+        );
+        console.log(this.filteredItems);
+      } else {
+        this.filteredItems = this.items;
+      }
     },
   },
   mounted() {
